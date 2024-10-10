@@ -1,0 +1,27 @@
+.salesCard {
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  margin: 20px;
+}
+
+.chartContainer {
+  position: relative;
+  height: 400px; // Đảm bảo biểu đồ có chiều cao cố định để hiển thị
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.monthSelect {
+  .ant-select-selector {
+    border-radius: 8px;
+    padding: 5px 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+}
