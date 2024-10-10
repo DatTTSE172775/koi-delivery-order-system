@@ -1,0 +1,17 @@
+.main-layout {
+  display: flex;
+  height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  padding: 20px;
+  background-color: #f0f2f5;
+  height: calc(100vh - 64px); // Chiều cao còn lại sau khi trừ đi Header
+  overflow-y: auto;
+}
