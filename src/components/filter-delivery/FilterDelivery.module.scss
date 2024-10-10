@@ -1,0 +1,21 @@
+.filterRow {
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.inputField {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+
+  &:focus,
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-color: #3f91ff;
+  }
+
+  input {
+    padding: 10px;
+    font-size: 16px;
+  }
+}
