@@ -1,79 +1,77 @@
-import { Card, Select } from "antd";
-import { Line } from "react-chartjs-2";
-import styles from "./SalesChart.module.scss";
+import { Select } from "antd";
+import React from "react";
+import {
+  Area,
+  CartesianGrid,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+import "./SalesChart.scss";
 
 const { Option } = Select;
 
-const SalesChart = () => {
-  // Dummy data for the chart
-  const data = {
-    labels: [
-      "5k",
-      "10k",
-      "15k",
-      "20k",
-      "25k",
-      "30k",
-      "35k",
-      "40k",
-      "45k",
-      "50k",
-      "55k",
-      "60k",
-    ],
-    datasets: [
-      {
-        label: "Sales",
-        data: [20, 40, 35, 80, 60, 50, 70, 55, 90, 65, 50, 60],
-        fill: true,
-        backgroundColor: "rgba(63, 145, 255, 0.2)",
-        borderColor: "#3F91FF",
-        pointBackgroundColor: "#3F91FF",
-        tension: 0.4,
-      },
-    ],
-  };
+// Dummy sales data
+const data = [
+  { name: "5k", value: 20 },
+  { name: "10k", value: 40 },
+  { name: "15k", value: 50 },
+  { name: "20k", value: 90 },
+  { name: "25k", value: 60 },
+  { name: "30k", value: 70 },
+  { name: "35k", value: 30 },
+  { name: "40k", value: 80 },
+  { name: "45k", value: 60 },
+  { name: "50k", value: 50 },
+  { name: "55k", value: 70 },
+  { name: "60k", value: 80 },
+];
 
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: false,
-      },
-      tooltip: {
-        enabled: true,
-      },
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-        max: 100,
-        ticks: {
-          callback: (value: number | string) =>
-            `${typeof value === "number" ? value : Number(value)}%`,
-          color: "#B0B0B0",
-        },
-      },
-      x: {
-        ticks: {
-          color: "#B0B0B0",
-        },
-      },
-    },
-  };
-
+const SalesChart: React.FC = () => {
   return (
-    <Card className={styles.salesCard}>
-      <div className={styles.header}>
+    <div className="sales-details-chart">
+      <div className="header-saleschart">
         <h3>Sales Details</h3>
-        <Select defaultValue="October" className={styles.monthSelect}>
-          <Option value="September">September</Option>
+        <Select defaultValue="October" style={{ width: 120 }}>
           <Option value="October">October</Option>
-          <Option value="November">November</Option>
+          <Option value="September">September</Option>
+          <Option value="August">August</Option>
         </Select>
       </div>
-      <Line data={data} options={options} />
-    </Card>
+
+      <ResponsiveContainer width="100%" height={300}>
+        <LineChart data={data}>
+          <defs>
+            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#1890ff" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#1890ff" stopOpacity={0} />
+            </linearGradient>
+          </defs>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Area
+            type="monotone"
+            dataKey="value"
+            stroke="#1890ff"
+            fillOpacity={1}
+            fill="url(#colorUv)"
+          />
+          <Line
+            type="monotone"
+            dataKey="value"
+            stroke="#1890ff"
+            strokeWidth={2}
+            dot={{ r: 4 }}
+            activeDot={{ r: 8 }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 

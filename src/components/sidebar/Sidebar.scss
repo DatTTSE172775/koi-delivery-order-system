@@ -3,11 +3,10 @@
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background-color: #e6f7ff;
 }
 
 .sidebar {
-  width: 250px;
+  width: 250px; /* Fixed width for sidebar */
   height: 100vh;
   position: fixed;
   top: 0;
@@ -16,20 +15,27 @@
   display: flex;
   flex-direction: column;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin: 20px 0;
+    text-align: center;
+  }
 }
 
 .main-content {
   flex: 1;
-  margin-left: 250px;
+  margin-left: 250px; /* Ensure content is to the right of the sidebar */
   display: flex;
   flex-direction: column;
   height: 100%;
   overflow-y: auto;
-  background-color: #e6f7ff; /* Set background for the main content */
 }
 
 .page-content {
   padding: 20px;
+  background-color: #f5f7fa;
   min-height: 100vh;
-  background-color: #e6f7ff; /* Change to white background for page content */
 }
